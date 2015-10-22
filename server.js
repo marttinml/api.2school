@@ -6,7 +6,7 @@ var mongoose = require('./config/mongoose'),
 var port = process.env.PORT || 5000;
 app.listen(port, function () {
     console.log(" - - - - - - - - - - - - - - - - - - - - - - - ");
-    console.log(" |     API REST [sefi] - http://localhost:" + port + "      | ");
+    console.log(" |     API REST [2school] - http://localhost:" + port + "      | ");
     console.log(" - - - - - - - - - - - - - - - - - - - - - - - ");
 });
 
