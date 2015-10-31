@@ -5,7 +5,7 @@ var Connection  = require('../app/utils/connection.util'),
 module.exports = function(){
     Connection.ejecute(function(err, db) { 
         assert.equal(null, err);
-        console.log("OK - - > Connected correctly to server.");
+        console.log("Connected correctly to mongodb ·························· OK");
         db.close();
     });
 };

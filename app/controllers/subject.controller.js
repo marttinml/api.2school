@@ -29,7 +29,21 @@ exports.statusFind = function (req, res) {
     Connection.ejecute(function(err, db){
         assert.equal(null, err);
         //ejecute query
-      Subject.statusFindModel(db, req.body || {}, function(result) {
+      Subject.statusFindModel(db, {}, function(result) {
+          db.close();
+          Log.logEnd({ start : start , response: result});
+          res.status(200).jsonp(result);
+      });
+    });
+};
+exports.statusFindByKey = function (req, res) {
+    var d   = new Date();
+        start   = d.getMilliseconds();
+        Log.logStart({controller : controller, method:'statusFindByKey', d : d, body:req.params });
+    Connection.ejecute(function(err, db){
+        assert.equal(null, err);
+        //ejecute query
+      Subject.statusFindModel(db, { key : Number(req.params.id) }, function(result) {
           db.close();
           Log.logEnd({ start : start , response: result});
           res.status(200).jsonp(result);
@@ -54,9 +68,6 @@ exports.statusUpdate = function (req, res) {
     });
     
 };
-
-
-
 
 
 exports.insert = function (req, res) {

@@ -19,10 +19,20 @@ var express         = require("express"),
         next();
     });
 
+    var VERSIONS = {'Pre-Production': '/v0'};
+    app.get('/', function(req, res) {
+        res.json(VERSIONS);
+    })
+    
+
     app.use(bodyParser.json());
     app.use(methodOverride());
     
-    require('../app/routes/subject.route')(app);
+    for (var k in VERSIONS) {
+        require('../app/routes' + VERSIONS[k])(app) ;
+    }
+
+    //require('../app/routes/subject.route')(app);
 
     return app;
 };
